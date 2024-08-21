@@ -1,6 +1,13 @@
 def version_compare(version1, version2):
-    # version_format = f'{major}.{minor}.{patch}.{compilation}'
+    """
+    Function to determine which of version1 or version2 is the most recent version.
 
+    :param version1: str represent string version of software
+    :param version2: str represent string version of software
+
+    :return -1 if version2 more recent, 0 if they are the same version, 1 if version1
+            more recent
+    """
     # Split version strings into list of subsequent parts
     version1 = version1.split('.')
     version2 = version2.split('.')
@@ -30,13 +37,9 @@ def version_compare(version1, version2):
 
     for n in range(zeros_to_pad):
         versions['shorter']['parts'].append('0')
-    
-    # print(versions['shorter']['parts'])
 
     versions['shorter']['parts'] = '.'.join(p for p in versions['shorter']['parts'])
     versions['longer']['parts'] = '.'.join(p for p in versions['longer']['parts'])
-
-    # print(versions)
 
     # Use Python string comparison to determine if equal, or if version1 or version2 
     # is greater than the other
@@ -53,7 +56,6 @@ def version_compare(version1, version2):
     if larger_version == "version1":
         return 1
     
-    # print(versions)
     # when version2 > version1
     if larger_version == "version2":
         return -1
