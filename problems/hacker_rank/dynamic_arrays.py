@@ -1,18 +1,14 @@
-def dynamicArray(n, queries):
-    col = [[] for i in range(n)]
-    res = []
-    lastanswer = 0
-    for q in queries:
-        q = list(map(lambda queryPart: int(queryPart), q.split(' ')))
-        data = (q[1]^lastanswer)%n
-        if q[0] == 1:
-            col[data].append(q[2])
-        elif q[0] == 2:
-            ind_x = q[2]%len(col[data])
-            lastanswer = col[data][ind_x]
-            res.append(lastanswer)
-
-    return res 
+arr=[[]for i in range(0,n)]
+lastAnswer=0
+answers=[]    
+for query in queries:
+    idx= (query[1]^lastAnswer)%n
+    if query[0]==1:
+        arr[idx].append(query[2])
+    if query[0]==2:
+        lastAnswer= arr[idx][query[2]% len(arr[idx])]
+        answers.append(lastAnswer)
+return answers
 
 dynamicArray(2, [
     '1 0 5', 

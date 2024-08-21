@@ -17,8 +17,8 @@ def stockmax(prices):
     max_price = prices[-1]
     profit = 0
 
-    # iterate prices from the max price to lowest, but starting 
-    # at n-1 as max_price already set to max val
+    # iterate prices from the found highest max most recently in time (e.g. at the end of prices 
+    # list) at len(prices)-1 as max_price already set to max val
     profit = 0
     current_max = prices[-1]
     for i in range(len(prices)-1, -1, -1):

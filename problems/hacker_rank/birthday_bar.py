@@ -8,7 +8,6 @@ def birthday(s, d, m):
         if total == d:
             numSegments += 1
         total = 0
-    
 
     return numSegments
         

@@ -27,7 +27,7 @@ def pageCount(n, p):
     # leastAmountTurns = leftToRight if rightToLeft > leftToRight else rightToLeft
 
     # return leastAmountTurns
-    rightToLeft = p // 2
+    rightToLeft = p // 2 # 
     leftToRight = (n - p) / 2   
     return min(rightToLeft, math.ceil(leftToRight) if n % 2 == 0 else math.floor(leftToRight))
 
