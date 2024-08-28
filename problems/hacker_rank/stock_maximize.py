@@ -24,13 +24,15 @@ def stockmax(prices):
     for i in range(len(prices)-1, -1, -1):
         if prices[i] >= current_max:
             current_max = prices[i]
-
+        
         profit += current_max - prices[i]
-
+        print(f'Current profit {profit} when subtract {prices[i]}, current max {current_max}')
     return profit
 
     
 
-print(stockmax([5, 3, 2]) == 0)
-print(stockmax([1, 2, 100]) == 197)
+# print(stockmax([5, 3, 2]) == 0)
+# print(stockmax([1, 2, 100]) == 197)
 print(stockmax([1, 3, 1, 2]) == 3)
+
+# print(stockmax([3,4,5,3,5,2]))
