@@ -3,12 +3,12 @@ import math
 def sudoku_validator(grid):
     digits = [1,2,3,4,5,6,7,8,9]
 
-    # for row in range(8):
-    #     if grid[row] != digits:
-    #         return False
-    #     for col in range(8):
-    #         if grid[row][col] != digits:
-    #             return False
+    for row in range(8):
+        if grid[row] != digits:
+            return False
+        for col in range(8):
+            if grid[row][col] != digits:
+                return False
 
     subgrids = []
     # Alternatively can iterate over range(0,9,3)
