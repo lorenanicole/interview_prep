@@ -16,4 +16,8 @@ def caesarCipher(s, k):
     
     return(translatedMsg)
 
-print(caesarCipher('middle-Outz', 2) == 'okffng-Qwvb')
+
+# print(caesarCipher('middle-Outz', 2)) # == 'okffng-Qwvb')
+# print(caesarCipher("There's-a-starman-waiting-in-the-sky", 3))
+print(caesarCipher('W', 4))
+print(caesarCipher("www.abc.xy", 87) == 'fff.jkl.gh')
