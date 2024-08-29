@@ -27,29 +27,55 @@ from collections import Counter
 
 # v2 - this should be O(n)
 # unclear if min is adding another O(n)
+# def climbingLeaderboard(ranked, player):
+#     ranked = Counter(ranked)
+#     currentRankings = {}
+#     playerRankings = []
+#     numRank = 1
+
+#     # Using the counter, generate rankings from 1 to the lowest in a dict 
+#     for playerScore in ranked:
+#         currentRankings[playerScore] = {'rank': numRank}   
+#         numRank += 1
+
+#     for playerScore in player:
+#         closestScore = min(ranked, key=lambda x:abs(x-playerScore))
+#         # import pdb; pdb.set_trace()
+#         if playerScore >= closestScore:
+#             # If larger than closest score than they take their rank
+#             # If same score then they are the same rank
+#             playerRankings.append(currentRankings[closestScore]['rank'])
+#         else:
+#             # If smaller than closest score than they are a rank behind
+#             playerRankings.append(currentRankings[closestScore]['rank'] + 1)
+
+#     return playerRankings
+
+# V3 - Big O(N+M)
 def climbingLeaderboard(ranked, player):
-    ranked = Counter(ranked)
-    currentRankings = {}
+    # Remove duplicates
+    ranked = list(set(ranked))
+    ranked.sort()
+    i = 0
     playerRankings = []
-    numRank = 1
 
-    # Using the counter, generate rankings from 1 to the lowest in a dict 
-    for playerScore in ranked:
-        currentRankings[playerScore] = {'rank': numRank}   
-        numRank += 1
-
-    for playerScore in player:
-        closestScore = min(ranked, key=lambda x:abs(x-playerScore))
+    for score in player:
+        # While the other players score is less than the other players
+        # iterate, we don't need to reset i because the player scores are 
+        # guranteed to be in ascending order 
+        while i < len(ranked) and ranked[i] <= score:
+            i += 1
         # import pdb; pdb.set_trace()
-        if playerScore >= closestScore:
-            # If larger than closest score than they take their rank
-            # If same score then they are the same rank
-            playerRankings.append(currentRankings[closestScore]['rank'])
-        else:
-            # If smaller than closest score than they are a rank behind
-            playerRankings.append(currentRankings[closestScore]['rank'] + 1)
+        # We use the length of the ranked scores and decrement by the current
+        # indx as larger values in the ranked scores appear towards the tail
+        # end of the ranked list and larger scores have a higher - that is a lower
+        # number - rank, and we add 1 as we are using a zero based indx and need
+        # to adjust accordingly
+        playerRankings.append(len(ranked) - i + 1)
 
     return playerRankings
+
+
 
 print(climbingLeaderboard(
     [100, 100, 50, 40, 40, 20, 10],
