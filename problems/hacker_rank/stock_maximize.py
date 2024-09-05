@@ -31,6 +31,13 @@ def stockmax(prices):
 
     
 
+def stockmax(prices):
+    maximum_profit = 0
+    for val in range([prices::-1]):
+        if prices[val] >= maximum_profit:
+            maximum_profit = prices[val]
+        profit += maximum_profit - prices[val]
+
 # print(stockmax([5, 3, 2]) == 0)
 # print(stockmax([1, 2, 100]) == 197)
 print(stockmax([1, 3, 1, 2]) == 3)

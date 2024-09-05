@@ -14,7 +14,7 @@ def designerPdfViewer(h, word):
         charIndx = letters.index(char)
         if h[charIndx] > maxHeight:
             maxHeight = h[charIndx]
-    print(maxHeight * 1 * numChars)
+
     return maxHeight * 1 * numChars
 
 

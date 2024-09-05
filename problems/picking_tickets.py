@@ -37,7 +37,32 @@ def pick_tickets(tickets: list) -> int:
         # print("----")
     return max_length
 
-print(pick_tickets([1, 1, 2, 2, 4, 4, 5, 5, 5] == 5))
+
+
+
+
+def pick_tickets(tickets):
+    frequency = [0] * 8
+    max_value = 0
+    for number in tickets:
+        # use the val of the elem as the index
+        frequency[number] += 1
+    print(frequency)
+    for i in range(1, 8):
+        # Looking at the frequency arr to determine if an element within the arr next to it is
+        # within 0 or 1
+        # import pdb; pdb.set_trace()
+        # Here we look at the val of the current item + the previous item and compare to the
+        # max_value remember between any 2 vals should be a diff of 0 or 1 for it to count
+        max_value = max(max_value, frequency[i] + frequency[i - 1])
+        print(max(max_value, frequency[i] + frequency[i - 1]), max_value, frequency[i] + frequency[i - 1])
+        # max value keeps a pointer of the max chain! so if e.g. have 3 items in max chain and then 
+        # more values come in like a 1, then we'll keep the max_value
+    return max_value
+
+
+
+# print(pick_tickets([1, 1, 2, 2, 4, 4, 5, 5, 5]))# == 5))
 print(pick_tickets([4, 6, 5, 3, 3, 1])) #  == 3)  
 # print(pick_tickets([1, 1, 1, 4, 5, 6]) == 3)        
-# print(pick_tickets([1, 2, 2, 3, 1, 2]) == 5)
+# print(pick_tickets([1, 2, 2, 3, 1, 2]) == 5)=

@@ -29,6 +29,31 @@ def sudoku_validator(grid):
     return True
     
 
+
+
+
+def sudoku_validator(grid):
+    digits = [1,2,3,4,5,6,7,8,9]
+
+    # for r_indx, row in enumerate(grid):   # x - indx for row
+    #     if row != digits:
+    #         return False
+    #     for c_indx, col in enumerate(grid):  # y - indx for col
+    #         if grid[r_indx][c_indx] != digits:
+    #             return False
+
+    for w in range(0, 8, 2):
+        for y in range(0, 8, 2):
+            for x in range(0, 8, 2):
+                for z in range(0, 8, 2):
+                    print(w, y, x, z)
+
+        
+
+
+
+
+
 print(sudoku_validator([
 [4, 0, 0, 0, 0, 5, 0, 0, 0],
 [0, 0, 0, 0, 0, 0, 1, 9, 8],
