@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Eligibility Verification API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /verify:
+    post:
+      operationId: verify_eligibility
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/verifyEligibility_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/verifyEligibility_200_response'
+          description: Eligibility verification result
+        "400":
+          description: Invalid input
+        "500":
+          description: Server error
+      summary: Verify patient eligibility
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+components:
+  schemas:
+    verifyEligibility_request:
+      properties:
+        carrier_name:
+          title: carrier_name
+          type: string
+        member_id:
+          title: member_id
+          type: string
+        full_name:
+          title: full_name
+          type: string
+        dob:
+          format: date
+          title: dob
+          type: string
+      required:
+      - carrier_name
+      - dob
+      - full_name
+      - member_id
+      title: verifyEligibility_request
+      type: object
+    verifyEligibility_200_response:
+      example:
+        eligible: true
+        message: message
+      properties:
+        eligible:
+          description: Indicates if the patient is eligible (true) or not (false)
+          title: eligible
+          type: boolean
+        message:
+          description: Additional information or reason if the patient is not eligible
+          title: message
+          type: string
+      title: verifyEligibility_200_response
+      type: object

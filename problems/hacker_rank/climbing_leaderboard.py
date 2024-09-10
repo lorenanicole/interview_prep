@@ -52,29 +52,61 @@ from collections import Counter
 #     return playerRankings
 
 # V3 - Big O(N+M)
+# def climbingLeaderboard(ranked, player):
+#     # Remove duplicates
+#     ranked = list(set(ranked))
+#     ranked.sort(reverse=True)
+#     # import pdb; pdb.set_trace()
+#     i = 0
+#     playerRankings = []
+
+#     for score in player:
+#         # While the other players score is less than the other players
+#         # iterate, we don't need to reset i because the player scores are 
+#         # guranteed to be in ascending order 
+#         while i < len(ranked) and ranked[i] <= score:
+#             i += 1
+#         # import pdb; pdb.set_trace()
+#         # We use the length of the ranked scores and decrement by the current
+#         # indx as larger values in the ranked scores appear towards the tail
+#         # end of the ranked list and larger scores have a higher - that is a lower
+#         # number - rank, and we add 1 as we are using a zero based indx and need
+#         # to adjust accordingly
+#         import pdb; pdb.set_trace()
+#         playerRankings.append(len(ranked) - i + 1)
+#     import pdb; pdb.set_trace()
+#     return playerRankings
+
+
+
+
+# def climbingLeaderboard(ranked, player):
+#     ranked = list(set(ranked))
+#     ranked.sort(reverse=True)
+#     output = []
+#     counter = 0
+#     for indx, score in enumerate(player):
+#         # import pdb; pdb.set_trace()
+#         while counter < len(ranked) and ranked[counter] <= score:
+#             counter += 1
+#         # Add 1 for 0 based indx
+#         output.append(len(ranked) - counter + 1)
+#         print(output)
+#     return output
+
+
+from collections import Counter
+
 def climbingLeaderboard(ranked, player):
-    # Remove duplicates
+    output = []
     ranked = list(set(ranked))
     ranked.sort()
-    i = 0
-    playerRankings = []
-
-    for score in player:
-        # While the other players score is less than the other players
-        # iterate, we don't need to reset i because the player scores are 
-        # guranteed to be in ascending order 
-        while i < len(ranked) and ranked[i] <= score:
-            i += 1
-        # import pdb; pdb.set_trace()
-        # We use the length of the ranked scores and decrement by the current
-        # indx as larger values in the ranked scores appear towards the tail
-        # end of the ranked list and larger scores have a higher - that is a lower
-        # number - rank, and we add 1 as we are using a zero based indx and need
-        # to adjust accordingly
-        playerRankings.append(len(ranked) - i + 1)
-
-    return playerRankings
-
+    counter = 0
+    for p_game in player:
+        while counter < len(ranked) and ranked[counter] <= p_game:
+            counter += 1
+        output.append(len(ranked) - counter + 1)
+    return output
 
 
 print(climbingLeaderboard(

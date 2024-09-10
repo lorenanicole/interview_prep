@@ -63,18 +63,18 @@ from collections import Counter
     # return max_value
 
 
-# def pick_tickets(tickets):
-#     tickets = sorted(tickets)
-#     tickets_freq = [0] * 100
-#     max_chain = 0
+def pick_tickets(tickets):
+    tickets = sorted(tickets)
+    tickets_freq = [0] * 100
+    max_chain = 0
 
-#     for indx, ticket in enumerate(tickets):
-#         tickets_freq[ticket] += 1
+    for indx, ticket in enumerate(tickets):
+        tickets_freq[ticket] += 1
     
-#     for i in range(100):
-#         max_chain = max(max_chain, tickets_freq[i] + tickets_freq[i + 1])
+    for i in range(100 - 1):
+        max_chain = max(max_chain, tickets_freq[i] + tickets_freq[i + 1])
     
-#     return max_chain
+    return max_chain
 
 
 # def pick_tickets(tickets):
@@ -115,20 +115,20 @@ from collections import Counter
 
 from collections import defaultdict
 
-def pick_tickets(a):
-    d = defaultdict(int)
-    r_val = 0
-    a = sorted(a)
-    for val in a:
-        d[val] += 1
-        # import pdb; pdb.set_trace()
-        # print(r_val, d[val] + d[val+1], d[val]+ d[val-1])
-        r_val = max(r_val, d[val]+d[val+1], d[val]+d[val-1])
+# def pick_tickets(a):
+#     d = defaultdict(int)
+#     r_val = 0
+#     a = sorted(a)
+#     for val in a:
+#         d[val] += 1
+#         # import pdb; pdb.set_trace()
+#         # print(r_val, d[val] + d[val+1], d[val]+ d[val-1])
+#         r_val = max(r_val, d[val]+d[val+1], d[val]+d[val-1])
 
-    return r_val
+#     return r_val
 
 
-# print(pick_tickets([1, 1, 2, 2, 4, 4, 5, 5, 6]))# == 5))
-# print(pick_tickets([4, 6, 5, 3, 3, 1])) #  == 3)  
+print(pick_tickets([1, 1, 2, 2, 4, 4, 5, 5, 6]))# == 5))
+print(pick_tickets([4, 6, 5, 3, 3, 1])) #  == 3)  
 print(pick_tickets([1, 1, 1, 4, 5, 6])) #== 3)        
-# print(pick_tickets([1, 2, 2, 3, 1, 2])) #== 5) #=
+print(pick_tickets([1, 2, 2, 3, 1, 2])) #== 5) #=
