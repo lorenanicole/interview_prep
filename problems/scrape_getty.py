@@ -41,7 +41,6 @@ import requests
 
 
 def get_all_images_threaded(url):
-    current_page = 1
     current_img_qty = 0
     driver = webdriver.Chrome()
 

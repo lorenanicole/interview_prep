@@ -31,10 +31,10 @@ from collections import Counter
 #     max_length = 0
 
 #     for i in range(100):
-#         print(i, i+1)
+#         # print(i, i+1)
 #         max_length = max(max_length, tickets[i] + tickets[i+1])
-#         print(max_length, tickets[i], tickets[i+1])
-#         print("----")
+#         # print(max_length, tickets[i], tickets[i+1])
+#         # print("----")
 #     return max_length
 
 
@@ -63,18 +63,18 @@ from collections import Counter
     # return max_value
 
 
-def pick_tickets(tickets):
-    tickets = sorted(tickets)
-    tickets_freq = [0] * 100
-    max_chain = 0
+# def pick_tickets(tickets):
+#     tickets = sorted(tickets)
+#     tickets_freq = [0] * 100
+#     max_chain = 0
 
-    for indx, ticket in enumerate(tickets):
-        tickets_freq[ticket] += 1
+#     for indx, ticket in enumerate(tickets):
+#         tickets_freq[ticket] += 1
     
-    for i in range(100 - 1):
-        max_chain = max(max_chain, tickets_freq[i] + tickets_freq[i + 1])
+#     for i in range(100 - 1):
+#         max_chain = max(max_chain, tickets_freq[i] + tickets_freq[i + 1])
     
-    return max_chain
+#     return max_chain
 
 
 # def pick_tickets(tickets):
@@ -127,6 +127,15 @@ from collections import defaultdict
 
 #     return r_val
 
+from collections import Counter
+def pick_tickets(a):
+    counter_arr = Counter(a)
+    max_length = 0
+    
+    for i in range(100):
+        max_length = max(max_length, counter_arr[i] + counter_arr[i+1])
+
+    return max_length
 
 print(pick_tickets([1, 1, 2, 2, 4, 4, 5, 5, 6]))# == 5))
 print(pick_tickets([4, 6, 5, 3, 3, 1])) #  == 3)  
